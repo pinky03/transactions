@@ -22,6 +22,16 @@ class Transaction extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'value', 'description', 'type'. 'created_at',
+        'user_id', 'value', 'description', 'type', 'created_at',
     ];
+
+    /**
+     * Возвращает пользователя которому принадлежит
+     *
+     * @return Model
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

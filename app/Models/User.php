@@ -42,4 +42,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $this->hasOne(Profile::class);
     }
+
+    /**
+     * @return array Transaction
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

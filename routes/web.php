@@ -16,3 +16,6 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->post('/transactions', 'TransactionsController@store');
+$router->get('/transactions/balance/{id}', 'TransactionsController@getBalance');

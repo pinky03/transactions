@@ -6,6 +6,7 @@ use App\Models\Profile;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use App\Jobs\CalculateProfileBalanceJob;
 
 class UsersTableSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class UsersTableSeeder extends Seeder
             function ($user) {
                 Profile::factory()->count(1)->create(['user_id' => $user->id]);
                 Transaction::factory()->count(rand(1000, 2000))->create(['user_id' => $user->id]);
+                dispatch(new CalculateProfileBalanceJob($user));
             }
         );
     }
